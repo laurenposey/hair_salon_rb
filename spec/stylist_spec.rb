@@ -49,9 +49,9 @@ describe(Stylist) do
     end
 
     it("lets you add a client to a stylist") do
-      stylist = Stylist.new({name => "Ada Lovelace", :id => nil})
+      stylist = Stylist.new({:name => "Ada Lovelace", :id => nil})
       book.save()
-      client = Client.new({:name => "Grace Hopper", :id => nil, :stylist_id => stylist.id()})
+      client = Client.new({:name => "Grace Hopper", :id => nil, :stylist_id => 1})
       client.save()
       client.update({:stylist_ids => [stylist.id()]})
       expect(stylist.clients()).to(eq([client]))
@@ -60,8 +60,8 @@ describe(Stylist) do
 
   describe("#delete") do
     it("lets you remove a stylist from the database") do
-      stylist1 = Stylist.new({:name => "", :id => nil})
-      stylist2 = Stylist.new({:name => "", :id => nil})
+      stylist1 = Stylist.new({:name => "Betty", :id => nil})
+      stylist2 = Stylist.new({:name => "Chris", :id => nil})
       stylist1.save()
       stylist2.save()
       stylist1.delete()
@@ -77,6 +77,7 @@ describe(Stylist) do
       client.save()
       client2 = Client.new({:name => "Ada Lovelace", :id => nil, :stylist_id => stylist.id()})
       client2.save()
+      client.update({:stylist_id => [stylist.id()]})
       client.update({:stylist_id => [stylist.id()]})
       expect(stylist.clients()).to(eq([client, client2]))
     end
