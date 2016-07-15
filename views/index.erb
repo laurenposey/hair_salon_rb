@@ -1,0 +1,34 @@
+<h1>Welcome!</h1>
+
+<h3>Here are all the stylists in this database:</h3>
+
+<% if @stylists.any?() %>
+  <p>Click on an stylist their clients:</p>
+
+  <ul>
+    <% @stylists.each do |stylist| %>
+      <li><a class="green" href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no stylists added yet!</p>
+<% end %>
+
+<p><a class="green" href="/stylists">Add a new stylist</a></p>
+
+
+<h3>Here are all the clients in this database:</h3>
+
+<% if @clients.any?() %>
+  <p>Click on a client to see their stylist:</p>
+
+  <ul>
+    <% @clients.each do |client| %>
+      <li><a class="green" href="/clients/<%= client.id() %>"><%= client.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no clients added yet!</p>
+<% end %>
+
+<p><a class="green" href="/clients">Add a new client</a></p>

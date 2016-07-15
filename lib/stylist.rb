@@ -37,6 +37,10 @@ class Stylist
     @name = attributes.fetch(:name, @name)
     @id = self.id()
     DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{@id};")
+
+    attributes.fetch(:id, []).each() do |id|
+      DB.exec("INSERT INTO clients (stylist_id) VALUES (#{self.id()});")
+    end
   end
 
   define_method(:delete) do
