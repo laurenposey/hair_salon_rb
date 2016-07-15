@@ -47,8 +47,6 @@ describe(Client) do
       client.update({:name => "Hazel"})
       expect(client.name()).to(eq("Hazel"))
     end
-
-
   end
 
   describe("#delete") do
