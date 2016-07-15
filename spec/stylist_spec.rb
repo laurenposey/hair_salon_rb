@@ -77,8 +77,8 @@ describe(Stylist) do
       client.save()
       client2 = Client.new({:name => "Ada Lovelace", :id => nil, :stylist_id => stylist.id()})
       client2.save()
-      client.update({:stylist_id => [stylist.id()]})
-      client.update({:stylist_id => [stylist.id()]})
+      client.update({:stylist_id => stylist.id()})
+      client.update({:stylist_id => stylist.id()})
       expect(stylist.clients()).to(eq([client, client2]))
     end
   end
