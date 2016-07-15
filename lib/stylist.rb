@@ -49,7 +49,7 @@ class Stylist
     clients.each() do |client|
       name = client.fetch("name")
       id = client.fetch("id").to_i()
-      client_id = client.fetch("stylist_id").to_i()
+      stylist_id = client.fetch("stylist_id").to_i()
       stylist_clients.push(Client.new({:name => name, :stylist_id => stylist_id, :id => id}))
     end
     stylist_clients

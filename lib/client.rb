@@ -33,7 +33,7 @@ class Client
     name = client.first().fetch('name')
     id = client.first().fetch('id').to_i()
     stylist_id = client.first().fetch('stylist_id').to_i()
-    Client.new({:name => name, :id => id}, :stylist_id => stylist_id)
+    Client.new({:name => name, :id => id, :stylist_id => stylist_id})
   end
 
   define_method(:update) do |attributes|
