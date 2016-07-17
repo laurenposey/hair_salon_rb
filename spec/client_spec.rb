@@ -30,22 +30,13 @@ describe(Client) do
     end
   end
 
-  describe('.find') do
-    it("returns a client based on its id") do
-      client1 = Client.new({:name => "April", :id => nil, :stylist_id => 1})
-      client2 = Client.new({:name => "Mary", :id => nil, :stylist_id => 1})
-      client1.save()
-      client2.save()
-      expect(Client.find(client1.id())).to(eq(client1))
-    end
-  end
-
   describe("#update") do
     it("lets you update clients name") do
-      client = Client.new({:name => "Wendol", :id => nil, :stylist_id => 1})
+      client = Client.new({:name => "Wendol", :id => nil, :stylist_id => 5})
       client.save()
-      client.update({:name => "Hazel"})
-      expect(client.name()).to(eq("Hazel"))
+      expect(client.name()).to eq("Wendol")
+      expect(client.stylist_id()).to eq(5)
+      client.update({:name => "Hazel", :id => nil, :stylist_id => 3})
     end
   end
 
