@@ -31,8 +31,8 @@ class Client
   define_singleton_method(:find) do |id|
     client = DB.exec("SELECT * FROM clients WHERE id = #{id};")
     name = client.first().fetch('name')
-    id = client.first().fetch('id').to_i()
     stylist_id = client.first().fetch('stylist_id').to_i()
+    id = client.first().fetch('id').to_i()
     Client.new({:name => name, :id => id, :stylist_id => stylist_id})
   end
 
