@@ -17,11 +17,11 @@ get('/stylists') do
   erb(:stylists)
 end
 
-get("/stylists/new") do
+get("/stylists/new") do 
   erb(:stylist_form)
 end
 
-post("/stylists") do
+post("/stylists") do #User submits form Server grabs the attributes submitted through the form and uses them to create a new object. The server returns the stylists page with the new stylist added
   name = params.fetch("name")
   @stylist = Stylist.new({:name => name, :id => nil})
   @stylist.save()
@@ -44,6 +44,15 @@ patch('stylists/:id') do
   erb(:stylist)
 end
 
+get('/clients') do
+  @clients = Client.all()
+  erb(:clients)
+end
+
+get('clients/new') do
+  erb(:client_form)
+end
+
 post("/clients") do
   name = params.fetch("name")
   stylist_id = params.fetch("stylist_id").to_i()
@@ -53,7 +62,12 @@ post("/clients") do
   erb(:stylist)
 end
 
-get("/clients:id/edit") do
+get("/clients/:id") do
+  @client = Client.find(params.fetch("id").to_i())
+  erb(:client)
+end
+
+get("/clients/:id/edit") do
   erb(:client_edit_form)
 end
 
