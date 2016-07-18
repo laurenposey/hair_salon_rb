@@ -49,7 +49,9 @@ describe('update a stylist path', {:type => :feature}) do
   end
 end
 
-
+describe('update a client path', {:type => :feature}) do
+  it('lets the user update a client') do
+    visit('clients')
 
   end
 end
