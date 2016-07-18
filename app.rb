@@ -17,7 +17,7 @@ get('/stylists') do
   erb(:stylists)
 end
 
-get("/stylists/new") do 
+get("/stylists/new") do
   erb(:stylist_form)
 end
 
@@ -29,7 +29,7 @@ post("/stylists") do #User submits form Server grabs the attributes submitted th
 end
 
 get("/stylists/:id") do
-  @stylist = Styist.find(params.fetch("id").to_i())
+  @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:stylist)
 end
 
