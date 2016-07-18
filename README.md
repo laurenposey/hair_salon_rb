@@ -9,13 +9,25 @@
 _An application to help a hair salon keep track of what clients are assigned to which stylists._
 
 ## Specifications
+#### RESTful Routing:
 
-Behavior  | Input Example | Output Example
-------------- | ------------- | -------------
-User can add stylist to the database and stylist name shows in browser.|"Katie"|"Katie"
-User can add client to he database and client's name shows up in browser.|"Bessie"|"Bessie"
-User can assign client to a stylist|stylist: "Katie" client: "Bessie"|stylist: "Katie" client: "Bessie"
-User can click on stylist's name and see all of that stylists clients|click event|Katie's clients: Bessie
+Behavior  | Route | Method | Process
+------------- | ------------- | ------------- | -------------
+Homepage | / | GET | User requests page. Server renders template.
+List all stylist | /stylists | GET | User requests page. Server collects all stylists and returns page to display them.
+Show single instance of stylist| /stylists/:id | GET | User requests single instance of stylist. Server uses stylist id to find it and returns a page to display the selected stylist
+New stylist form | /stylists/new | GET | User requests to add stylist. Server returns a page with a form that will let the user add a stylist
+Create stylist when form is submitted | /stylists | POST | User submits the form. The server grabs the attributes submitted through the form and uses them to create a new object. The server returns the stylists page with the new stylist displayed.
+Update a stylist form | /stylist/:id/edit | GET | User requests to update stylist. Server returns the page with a form that will let the user update the stylist.
+Update database when stylist edit form is submitted | /stylist/:id | PATCH | User submits the form. The server grabs the attributes submitted through the form and uses them to update the stylist with the id in the URL. The server returns the stylist page.
+Add a client to a stylist | /stylist/:id/clients | POST | User submits the form. Server grabs the attributes submitted through the form and uses them to create a new client object. The server returns the stylist page with the new  client displayed.
+Update a client on a stylist list of clients | /clients/:id/edit | GET | User requests to update client. Server returns the client edit page that will let the user update the client's information
+Update database when client edit  form is submitted | /clients/:id | PATCH | User submits the form. The server grabs the attributes submitted through the form and uses them to update the client with the matching id in the URL. The server returns the clients page.
+Delete the stylist resource from the database | /stylists/:id/edit | DELETE | User submits a delete form. Server grabs the id for the stylist from the params and found in the URL, finds the stylist with the matching id and destroys it in the database
+Delete the client resource from the database | /clients/:id/edit | DELETE | User submits a delete from. Server grabs the id for the clients from the params and found in the URL. It finds the client with that id and destroys it in the database.
+
+
+
 
 ## Setup/Installation Requirements
 
@@ -34,10 +46,9 @@ User can click on stylist's name and see all of that stylists clients|click even
 ## Known Bugs
 
 _PROJECT IS INCOMPLETE:_
-* _app.rb is empty_
-* _Specs Stylist#clients and Stylist#update not passing_
+
 * _No integration specs_
-* _No use of RESTful routing_
+* _Will not display stylists or clients_
 
 ## Support and contact details
 
