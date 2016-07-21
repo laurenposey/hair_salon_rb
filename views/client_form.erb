@@ -5,24 +5,16 @@
   <label for="name">Name of Client:</label>
   <input id="name" name="name" type="text">
 
-  <% if @stylist.any?() %>
+  <% if @stylists.any?() %>
   <p>Click on a stylist to assign to client</p>
 
     <% @stylists.each() do |stylist| %>
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="stylsit_id" value="<%= stylist.id() %>"><%= stylist.name() %>
+          <input type="checkbox" name="stylist_id" value="<%= stylist.id() %>"><%= stylist.name() %>
         </label>
       </div>
       <% end %>
   <% end %>
   <button type="submit">Add Client</button>
 </form>
-<hr>
-<div class="container">
-  <button><a href="/stylists">View All Stylists</a></button>
-  <button><a href="/stylists/new">Add New Stylist</a></button>
-  <hr>
-  <button><a href="/clients">View All Clientss</a></button>
-  <button><a href="/clients/new">Add New Clients</a></button>
-</div>
