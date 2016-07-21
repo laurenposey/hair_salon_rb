@@ -45,10 +45,7 @@ Delete the client resource from the database | /clients/:id/edit | DELETE | User
 
 ## Known Bugs
 
-_PROJECT IS INCOMPLETE:_
-
-* _No integration specs_
-* _Will not display stylists or clients_
+ _None_
 
 ## Support and contact details
 
